@@ -52,7 +52,7 @@ public class User {
         this.lastName = lastName;
     }
 
-    public int getAge() {
+    public byte getAge() {
         return age;
     }
 
