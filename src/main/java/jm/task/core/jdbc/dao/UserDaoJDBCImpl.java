@@ -19,7 +19,7 @@ public class UserDaoJDBCImpl implements UserDao {
                 "(id BIGINT PRIMARY KEY AUTO_INCREMENT, " +
                 "name VARCHAR(255), " +
                 "lastName VARCHAR(255)," +
-                "age INT)";
+                "age TINYINT)";
 
         try (Statement statement = connection.createStatement()) {
             statement.executeUpdate(sql);
@@ -40,7 +40,7 @@ public class UserDaoJDBCImpl implements UserDao {
     }
 
     @Override
-    public void saveUser(String name, String lastName, int age) {
+    public void saveUser(String name, String lastName, byte age) {
         String sql = "INSERT INTO users(name, lastname, age) VALUES('" + name + "','" + lastName + "'," + age + ")";
         try (Statement statement = connection.createStatement()) {
             statement.executeUpdate(sql);
@@ -75,7 +75,7 @@ public class UserDaoJDBCImpl implements UserDao {
                 user.setId(resultSet.getLong("id"));
                 user.setName(resultSet.getString("name"));
                 user.setLastName(resultSet.getString("lastName"));
-                user.setAge(resultSet.getInt("age"));
+                user.setAge(resultSet.getByte("age"));
                 allUser.add(user);
             }
 

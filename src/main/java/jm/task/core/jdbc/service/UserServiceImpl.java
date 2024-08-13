@@ -17,7 +17,7 @@ private UserDaoJDBCImpl userDaoJDBC = new UserDaoJDBCImpl();
         userDaoJDBC.dropUsersTable();
     }
 
-    public void saveUser(String name, String lastName, int age) throws SQLException {
+    public void saveUser(String name, String lastName, byte age) throws SQLException {
         userDaoJDBC.saveUser(name, lastName, age);
     }
 

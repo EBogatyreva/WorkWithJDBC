@@ -11,10 +11,10 @@ public class Main {
         try {
             userService.createUsersTable();
 
-            userService.saveUser("Мария ", "Богданова", (int) 19);
-            userService.saveUser("Лиза ", "Иванова", (int) 23);
-            userService.saveUser("Егор ", "Мелузов", (int) 20);
-            userService.saveUser("Игорь ", "Брусницын", (int) 35);
+            userService.saveUser("Мария ", "Богданова", (byte) 19);
+            userService.saveUser("Лиза ", "Иванова", (byte) 23);
+            userService.saveUser("Егор ", "Мелузов", (byte) 20);
+            userService.saveUser("Игорь ", "Брусницын", (byte) 35);
 
             userService.getAllUsers();
             userService.cleanUsersTable();

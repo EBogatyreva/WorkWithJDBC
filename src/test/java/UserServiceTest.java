@@ -10,7 +10,7 @@ public class UserServiceTest {
 
     private final String testName = "Ivan";
     private final String testLastName = "Ivan";
-    private final int testAge = 5;
+    private final byte testAge = 5;
 
 
     @Test
