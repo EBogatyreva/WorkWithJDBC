@@ -5,19 +5,22 @@ import jm.task.core.jdbc.service.UserServiceImpl;
 import java.sql.SQLException;
 
 public class Main {
-    public static void main(String[] args) throws SQLException {
+    public static void main(String[] args) {
         UserServiceImpl userService = new UserServiceImpl();
-        userService.createUsersTable();
 
-        userService.saveUser("Мария ", "Богданова", (byte) 19);
-        userService.saveUser("Лиза ", "Иванова", (byte) 23);
-        userService.saveUser("Егор ", "Мелузов", (byte) 20);
-        userService.saveUser("Игорь ", "Брусницын", (byte) 35);
+        try {
+            userService.createUsersTable();
 
-        userService.getAllUsers();
-        userService.cleanUsersTable();
-        userService.dropUsersTable();
+            userService.saveUser("Мария ", "Богданова", (int) 19);
+            userService.saveUser("Лиза ", "Иванова", (int) 23);
+            userService.saveUser("Егор ", "Мелузов", (int) 20);
+            userService.saveUser("Игорь ", "Брусницын", (int) 35);
 
-        // реализуйте алгоритм здесь
+            userService.getAllUsers();
+            userService.cleanUsersTable();
+            userService.dropUsersTable();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 }
