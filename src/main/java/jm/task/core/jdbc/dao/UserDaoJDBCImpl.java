@@ -7,7 +7,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UserDaoJDBCImpl implements UserDao {
+/*public class UserDaoJDBCImpl implements UserDao {
     private final Connection connection = Util.getConnection();
 
     public UserDaoJDBCImpl() {
@@ -57,8 +57,7 @@ public class UserDaoJDBCImpl implements UserDao {
     public void removeUserById(long id) {
         String sql = "DELETE FROM users WHERE id = ?";
 
-        try (PreparedStatement preparedStatement = connection.prepareStatement(sql);
-        ) {
+        try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
             preparedStatement.setLong(1, id);
 
             preparedStatement.executeUpdate();
@@ -100,4 +99,4 @@ public class UserDaoJDBCImpl implements UserDao {
             e.printStackTrace();
         }
     }
-}
+}*/
