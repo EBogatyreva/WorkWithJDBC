@@ -7,7 +7,6 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
-import javax.persistence.criteria.CriteriaQuery;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -69,7 +68,8 @@ public class UserDaoHibernateImpl implements UserDao {
         Session session = sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();
         try {
-            session.save(new User(name, lastName, age));
+            User user = new User(name, lastName, age);
+            session.save(user);
             transaction.commit();
             System.out.println("Пользователь сохранен");
         } catch (HibernateException e) {
@@ -87,7 +87,8 @@ public class UserDaoHibernateImpl implements UserDao {
         Session session = sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();
 
-        try {session.remove(session.get(User.class, id));
+        try {
+            session.remove(session.get(User.class, id));
             transaction.commit();
             System.out.println("Пользователь удалён");
         } catch (HibernateException e) {
@@ -109,12 +110,13 @@ public class UserDaoHibernateImpl implements UserDao {
         List<User> userList = new ArrayList<>();
 
         try {
-            session.createQuery("FROM User").list();
+            userList = session.createQuery("FROM User").list();
             transaction.commit();
-            return userList;
         } catch (HibernateException e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
             e.printStackTrace();
-            transaction.rollback();
         } finally {
             session.close();
         }
